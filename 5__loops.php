@@ -24,3 +24,12 @@ while($x < 5);
  foreach($posts as $post){
     echo $post;
  }
+ // Associate arrays
+ $person = [
+    'first_name' => 'Azhar',
+    'second_name' => 'Abbass',
+    'age' => 25,
+ ];
+ foreach($person as $key => $value){
+    echo `$key  -  $value <br>`;
+ }
