@@ -13,7 +13,7 @@ class User {
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
-        echo 'contsructer run';
+        echo 'class user contsructer run'. '<br>';
     }
     // method is a function that belongs to a class
     function set_name($name){
@@ -31,9 +31,9 @@ $user2 = new User('Malik', 'ali@gmail.com', '2343');
 //as properties are public so we can access them outside of class
 $user1->name = "Ali";
 $user2->set_name("Malik");
-echo $user1->name;
-echo $user2->name;
-var_dump($user1);
+echo $user1->name. '<br>';
+echo $user2->name .'<br>';
+// var_dump($user1);
 
 //inheritence
 
@@ -43,6 +43,7 @@ class Employee extends User{
     public function __construct($name, $email, $password, $title){
         parent::__construct($name, $email, $password);
         $this->title = $title;
+        echo 'class employee constructer run <br>';
     }
     public function getTitle(){
         return $this->title;
@@ -51,4 +52,5 @@ class Employee extends User{
 
 // creating object of child class
 $employee1 = new Employee("Bilal", "abc@gmail.com", "3424", "HR manager");
+echo 'Employee object, getting employee title: <br>';
 echo $employee1->getTitle();
