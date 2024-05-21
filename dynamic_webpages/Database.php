@@ -3,9 +3,14 @@ class Database {
     public $connection;
 
     public function __construct() {
-        $dsn = "mysql:host=localhost;dbname=blogpost_db;user=root";
 
-        $this->connection = new PDO($dsn);
+        $config = [
+            'host'=> 'localhost',
+            'dbname'=> 'blogpost_db',
+        ];
+        $dsn = "mysql:host={$config['host']};dbname={$config['dbname']}";
+
+        $this->connection = new PDO($dsn, 'root');
     }
 
     public function query($query) {
