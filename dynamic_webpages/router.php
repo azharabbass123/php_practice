@@ -2,7 +2,6 @@
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-
 $routes = [
     '/'=> 'controlers/index.php',
     '/about'=> 'controlers/about.php',

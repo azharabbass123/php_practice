@@ -8,7 +8,7 @@ class Database {
             'host'=> 'localhost',
             'dbname'=> 'blogpost_db',
         ];
-        $dsn = "mysql:host={$config['host']};dbname={$config['dbname']}";
+        $dsn = "mysql:host={$config['host']};port='5500';dbname={$config['dbname']}";
 
         $this->connection = new PDO($dsn, 'root');
     }
