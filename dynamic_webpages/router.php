@@ -1,11 +1,10 @@
 <?php 
 
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-
+$uri = isset($_GET['url']) ? $_GET['url'] : '/';
 $routes = [
     '/'=> 'controlers/index.php',
-    '/about'=> 'controlers/about.php',
-    '/contact'=> 'controlers/contact.php',
+    'about.php'=> 'controlers/about.php',
+    'contact.php'=> 'controlers/contact.php',
 ];
 
 
@@ -13,7 +12,7 @@ $routes = [
 function routeToControler($uri, $routes){
 
     if(array_key_exists($uri, $routes)) {
-        require  $routes[$uri];
+        include $routes[$uri];
     
     } else {
     
@@ -27,5 +26,5 @@ routeToControler($uri, $routes);
 function abort($code = 404) {
     http_response_code($code);
 
-    require "views/$code.php";
+    include "views/$code.php";
 }

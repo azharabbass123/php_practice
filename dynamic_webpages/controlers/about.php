@@ -3,4 +3,4 @@
 $heading = 'About';
 
 
-include './views/about.view.php';
+include 'views/about.view.php';

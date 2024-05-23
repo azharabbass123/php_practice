@@ -24,4 +24,4 @@ $heading = 'Home';
 // echo ($post['title']);
 
 
-include './views/index.view.php';
+include 'views/index.view.php';

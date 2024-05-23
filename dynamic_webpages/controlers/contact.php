@@ -1,4 +1,4 @@
 <?php 
 
 $heading = 'Contact Us';
- include './views/contact.view.php';
+ include 'views/contact.view.php';
