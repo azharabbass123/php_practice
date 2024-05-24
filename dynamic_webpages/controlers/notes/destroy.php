@@ -7,7 +7,6 @@ spl_autoload_register(function ($class) {
 $config = require('config.php');
 $db = new Database($config['database']);
 
-$heading = 'Note';
 $currentUserId = 1;
 
 function abort($code = 404) {
@@ -15,7 +14,6 @@ function abort($code = 404) {
 
     include "views/$code.php";
 }
-
 
 $note = $db->query('Select * from notes where id = :id', [
     'id' => $_GET['id']
@@ -28,7 +26,9 @@ if(! $note){
 if($note['user_id'] != $currentUserId){
     abort(Response::FORBIDDEN);
 }
-    
+$db->query('Delete from notes where id = :id', [
+    'id' => $_POST['id']
+]);
 
-
-include 'views/notes/show.view.php';
+header('location: notes');
+exit();

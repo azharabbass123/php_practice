@@ -9,7 +9,7 @@
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <a href="/php_practice/dynamic_webpages/" class="<?php echo ($_SERVER['REQUEST_URI'] === '/php_practice/dynamic_webpages/') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-              <a href="/php_practice/dynamic_webpages/about" class="<?php echo ($_SERVER['REQUEST_URI'] === '/php_practice/dynamic_webpages/about.php') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
+              <a href="about" class="<?php echo ($_SERVER['REQUEST_URI'] === '/php_practice/dynamic_webpages/about.php') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
               <a href="/php_practice/dynamic_webpages/notes" class="<?php echo ($_SERVER['REQUEST_URI'] === '/php_practice/dynamic_webpages/notes.php') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notes</a>
               <a href="/php_practice/dynamic_webpages/contact" class="<?php echo ($_SERVER['REQUEST_URI'] === '/php_practice/dynamic_webpages/contact.php') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
             </div>

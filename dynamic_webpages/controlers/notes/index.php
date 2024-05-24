@@ -1,7 +1,9 @@
 <?php 
 
 
-require 'Database.php';
+spl_autoload_register(function ($class) {
+    require 'core/' . $class .".php";
+});
 $config = require('config.php');
 $db = new Database($config['database']);
 
