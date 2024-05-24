@@ -10,4 +10,4 @@ $heading = 'My Notes';
 $notes = $db->query('Select * from notes where user_id = 1')->fetchAll(PDO::FETCH_ASSOC);
 
 
-include 'views/notes.view.php';
+include 'views/notes/index.view.php';

@@ -21,4 +21,4 @@ if($note['user_id'] != $currentUserId){
     abort(Response::FORBIDDEN);
 }
 
-include 'views/note.view.php';
+include 'views/notes/show.view.php';

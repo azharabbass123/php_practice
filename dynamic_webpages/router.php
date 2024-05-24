@@ -3,11 +3,11 @@
 $uri = isset($_GET['url']) ? $_GET['url'] : '/';
 $routes = [
     '/'=> 'controlers/index.php',
-    'about.php'=> 'controlers/about.php',
-    'notes.php'=> 'controlers/notes.php',
-    'note-create'=> 'controlers/note-create.php',
-    'note'=> 'controlers/note.php',
-    'contact.php'=> 'controlers/contact.php',
+    'about'=> 'controlers/about.php',
+    'notes'=> 'controlers/notes/index.php',
+    'create'=> 'controlers/notes/create.php',
+    'note'=> 'controlers/notes/show.php',
+    'contact'=> 'controlers/contact.php',
 ];
 
 
