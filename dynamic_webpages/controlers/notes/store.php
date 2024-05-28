@@ -17,6 +17,7 @@ if(! Validater::string($_POST['body'], 1, 1000)){
 }
 if(! empty($errors)){
     require 'views/notes/create.view.php';
+    exit();
 }
 
 $db->query('INSERT INTO notes(body, user_id) VALUES(:body, :user_id)', [

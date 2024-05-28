@@ -9,4 +9,8 @@
     $router->get('create', 'controlers/notes/create.php');
     $router->post('create', 'controlers/notes/store.php');
     $router->delete('note', 'controlers/notes/destroy.php');
+
+    $router->get('edit','controlers/notes/edit.php');
+    $router->patch('edit', 'controlers/notes/update.php');
+
     $router->get('note', 'controlers/notes/show.php');
