@@ -18,4 +18,6 @@
     $router->get('register', 'controlers/register/create.php')->only('guest');
     $router->post('register', 'controlers/register/store.php');
 
-    $router->get('login', 'controlers/sessions/create.php')->only('guest');
+    $router->delete('session', 'controlers/session/destroy.php')->only('auth');
+    $router->get('login', 'controlers/session/create.php')->only('guest');
+    $router->post('login', 'controlers/session/store.php')->only('guest');

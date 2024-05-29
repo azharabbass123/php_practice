@@ -15,8 +15,8 @@ if(! Validater::string($email, 5, 50)) {
     $errors['body'] = 'providea valid email address';
 }
 
-if(! Validater::string($password, 7, 255)) {
-    $errors['body'] = 'Please provide a password greater then 7 characters';
+if(! Validater::string($password)) {
+    $errors['body'] = 'Please provide a valid password ';
 }
 if(! empty($errors)){
     require 'views/register/create.view.php';
@@ -28,19 +28,17 @@ if(! empty($errors)){
 ])->fetch();
 
 if($user){
-    $_SESSION['user'] = [
-        'email' => $email,
-    ];
-    header('location: register');
-} else {
-    $db->query('INSERT INTO users(email, password) VALUES (:email, :password)', [
-        'email'=> $email,
-        'password'=> password_hash($password, PASSWORD_BCRYPT)
-    ]);
-
-    $_SESSION['user'] = [
-        'email' => $email,
-    ];
-    header('location: notes');
-    exit();
+    print_r($user);
+    if (password_verify($password, $user['password'])){
+        $_SESSION['user'] = [
+            'email' => $email
+        ];
+        header('location: notes');
+        exit();
+    } else {
+        $errors['body'] = "Provided email and password does not match";
+        require 'views/session/create.view.php';
+    }
+} else{
+    require 'views/session/create.view.php';
 }
