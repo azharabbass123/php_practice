@@ -28,7 +28,6 @@ if(! empty($errors)){
 ])->fetch();
 
 if($user){
-    print_r($user);
     if (password_verify($password, $user['password'])){
         $_SESSION['user'] = [
             'email' => $email
