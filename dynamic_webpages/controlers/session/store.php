@@ -8,15 +8,39 @@ $form = LoginForm::validate($attributes = [
     'password' => $_POST['password']
 ]);
 
-$signedIn = (new Authenticator)->attempt(
-    $attributes['email'], $attributes['password']
-);
+$config = require('config.php');
+$db = new Database($config['database']);
 
-if(! $signedIn){
-    $form->error(
-        'email', 'No matching account for that email address and password.'
-    )->throw();
+$errors = [];
+
+if(! Validater::string($email, 5, 50)) {
+    $errors['body'] = 'providea valid email address';
 }
 
-header('location: /php_practice/dynamic_webpages/');
-exit();
+if(! Validater::string($password)) {
+    $errors['body'] = 'Please provide a valid password ';
+}
+if(! empty($errors)){
+    require 'views/register/create.view.php';
+    exit();
+}
+
+ $user = $db->query('select * from users where email = :email', [
+    'email'=> $email
+])->fetch();
+
+if($user){
+    print_r($user);
+    if (password_verify($password, $user['password'])){
+        $_SESSION['user'] = [
+            'email' => $email
+        ];
+        header('location: notes');
+        exit();
+    } else {
+        $errors['body'] = "Provided email and password does not match";
+        require 'views/session/create.view.php';
+    }
+} else{
+    require 'views/session/create.view.php';
+}
