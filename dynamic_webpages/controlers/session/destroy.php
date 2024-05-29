@@ -1,11 +1,9 @@
 <?php 
 
-$_SESSION = [];
-session_destroy();
+spl_autoload_register(function ($class) {
+    require 'core/' . $class .".php";
+});
 
-$params = session_get_cookie_params();
-
-setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['httponly']);
-
+Session::destroy();
 header('location: /php_practice/dynamic_webpages/');
 exit();

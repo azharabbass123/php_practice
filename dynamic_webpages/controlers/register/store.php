@@ -12,7 +12,7 @@ $db = new Database($config['database']);
 $errors = [];
 
 if(! Validater::string($email, 5, 50)) {
-    $errors['body'] = 'providea valid email address';
+    $errors['body'] = 'Provide a valid email address';
 }
 
 if(! Validater::string($password, 7, 255)) {
@@ -28,10 +28,8 @@ if(! empty($errors)){
 ])->fetch();
 
 if($user){
-    $_SESSION['user'] = [
-        'email' => $email,
-    ];
-    header('location: register');
+    
+    header('location: login');
 } else {
     $db->query('INSERT INTO users(email, password) VALUES (:email, :password)', [
         'email'=> $email,
