@@ -10,6 +10,7 @@ $config = require('config.php');
 $db = new Database($config['database']);
 
 $errors = [];
+$currentUserId = (int) Session::get('user')['curUserId'];
 
 if(! Validater::string($_POST['body'], 1, 1000)){
     $errors['body'] = "A description of no more than 1000 characters is requied";
@@ -22,7 +23,7 @@ if(! empty($errors)){
 
 $db->query('INSERT INTO notes(body, user_id) VALUES(:body, :user_id)', [
     'body' => trim($_POST['body']),
-    'user_id' => 1
+    'user_id' => $currentUserId
 ]);
 $_POST['body'] = '';
 

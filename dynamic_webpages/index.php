@@ -16,8 +16,8 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 try {
     $router->route($uri, $method);
 } catch (ValidationException $exception) {
-    Session::flash('errors', $exception->errors);
-    Session::flash('old', $exception->old);
+    Session::flash('errors', $exception->getErrors());
+    Session::flash('old', $exception->getOld());
 
     $previous_url = $_SERVER['HTTP_REFERER'];
     header("location: $previous_url");

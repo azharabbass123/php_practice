@@ -14,7 +14,7 @@ $signedIn = (new Authenticator)->attempt(
 
 if(! $signedIn){
     $form->error(
-        'email', 'No matching account for that email address and password.'
+        'misMatch', 'No matching account for that email address and password.'
     )->throw();
 }
 

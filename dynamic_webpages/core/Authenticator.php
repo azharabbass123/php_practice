@@ -15,7 +15,8 @@ class Authenticator
         if($user){
             if(password_verify($password, $user['password'])){
                 $this->login([
-                    'email' => $email
+                    'email' => $email,
+                    'id' =>$user['id']
                 ]);
 
                 return true;
@@ -24,10 +25,27 @@ class Authenticator
         return false;
     }
 
+    public function checkEmail($email, $password){
+        $config = require('config.php');
+        $db = new Database($config['database']);
+        $user = $db->query('select * from users where email = :email', [
+            'email'=> $email
+        ])->fetch();
+        
+        if($user){
+            return true;
+        }
+        $db->query('INSERT INTO users(email, password) VALUES (:email, :password)', [
+            'email'=> $email,
+            'password'=> password_hash($password, PASSWORD_BCRYPT)
+        ]);
+        return false;
+    }
     public function login($user)
     {
         $_SESSION['user'] = [
-            'email' => $user['email']
+            'email' => $user['email'],
+            'curUserId' => $user['id']
         ];
 
         session_regenerate_id(true);

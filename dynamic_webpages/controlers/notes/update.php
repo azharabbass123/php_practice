@@ -8,7 +8,7 @@ spl_autoload_register(function ($class) {
 $config = require('config.php');
 $db = new Database($config['database']);
 
-$currentUserId = 1;
+$currentUserId = (int) Session::get('user')['curUserId'];
 
 function abort($code = 404) {
     http_response_code($code);

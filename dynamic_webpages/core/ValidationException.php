@@ -2,8 +2,8 @@
 
 class ValidationException extends \Exception
 {
-     public $errors;
-    public $old;
+    protected array $errors;
+    protected array $old;
 
     public static function throw($errors, $old){
         $instance = new static('The form failed to validate.');
@@ -12,5 +12,15 @@ class ValidationException extends \Exception
         $instance->old = $old;
 
         throw $instance;
+    }
+
+    public function getErrors(): array
+    {
+        return $this->errors;
+    }
+
+    public function getOld(): array
+    {
+        return $this->old;
     }
 }
